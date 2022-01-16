@@ -1,0 +1,17 @@
+Assuntos para relembrar sobre o uso do Git/GitHub
+
+Pasta de trabalho: Workspace (usar Workspace/DIO no curso)
+HD a montar: sdb2 Em uma das pastas HD# (sudo mount /dev/sdb2 ~/HD1 por exemplo)
+Não esquecer do umount
+
+Gerar chave SSH e conectar com GitHub: (colocar depois)
+
+git clone [código ssh do repositório] (baixa o código fonte existente do repositório remoto, no caso o GitHub)
+
+git status (fornece algumas informações sobre o ramo [branch] em que você estiver no momento, como seu nome, se ele está atualizado em relação ao master e quais arquivos foram alterados)
+
+git add
+
+git commit
+
+git init
