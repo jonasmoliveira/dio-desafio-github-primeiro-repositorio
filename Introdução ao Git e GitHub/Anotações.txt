@@ -1,17 +1,53 @@
+Sintaxe básica Markdown: https://www.markdownguide.org/basic-syntax/
+
 Assuntos para relembrar sobre o uso do Git/GitHub
 
 Pasta de trabalho: Workspace (usar Workspace/DIO no curso)
 HD a montar: sdb2 Em uma das pastas HD# (sudo mount /dev/sdb2 ~/HD1 por exemplo)
 Não esquecer do umount
 
-Gerar chave SSH e conectar com GitHub: (colocar depois)
+git --version (exibe a versão do Git instalada)
 
-git clone [código ssh do repositório] (baixa o código fonte existente do repositório remoto, no caso o GitHub)
+Gerar par de chaves pública e privada SSH e conectar com GitHub: 
+
+ssh-keygen -t ed25519 -c jmello.oliveira@yahoo.com.br  (gera um par de chaves ssh de criptografia tipo ed25519 na sua máquina)
+Ele pergunta endereço para salvar, dar Enter
+Inserir senha duas vezes
+
+cd /home/jonas/.ssh/ (ir para a pasta oculta ssh aonde a chave foi gerada)
+cat id_ed25519.pub  (exibe o conteúdo da chave pública, que deve ser então copiada e colada no GitHub em chaves SSH)
+eval $(ssh-agent -s) (inicia o SSH Agent, que irá gerenciar suas chaves ssh, irá exibir um número de processo)
+ssh-add id_ed25519 (entrega para o SSH Agent a localização da nossa chave privada, para ele usá-la toda vez que chegar algo criptografado com a nossa chave. Se o comando for digitado fora da pasta aonde a chave se encontra, será necessário indicar todo o caminho)
+
+
+Outros comandos:
+
+git config --global user.email "email@email.com" (configura o e-mail de usuário de forma global, ou seja, para todos os projetos. Poderia ser configurado somente para um repositório)
+
+git config --global user.name "Meu nome" (configura o nome de usuário de forma global, ou seja, para todos os projetos. Poderia ser configurado somente para um repositório)
+
+git config --list (exibe a lista de configurações do seu Git)
+
+git clone [código ssh do repositório] (baixa o código fonte existente do repositório remoto, no caso o GitHub. Precisa ser feito sempre que se quiser alterar algo que já está no GitHub)
 
 git status (fornece algumas informações sobre o ramo [branch] em que você estiver no momento, como seu nome, se ele está atualizado em relação ao master e quais arquivos foram alterados)
 
-git add
+git add -A (adiciona todas as alterações feitas nos diversos arquivos e pastas, sejam novos, modificados ou deletados)
 
-git commit
+git add . (idem anterior, mas somente da pasta em que você está para baixo caso você não esteja na raiz do repositório)
 
-git init
+git add --ignore removal . (idem anterior exceto arquivos deletados)
+
+git add -u (adiciona somente os arquivos modificados e deletados, mas não os novos)
+
+git add * (o mesmo que add . mas sem os arquivos e diretórios que começam com . (ocultos))
+
+git commit -m "Comentário relativo a alteração" (envia todas as alterações para o repositório, salvando-as e deixando um comentário relativo a alteração)
+
+git init (cria um repositório vazio na pasta em que se encontra dentro de uma subpasta oculta .git. ls -a exibe os itens ocultos)
+
+git push
+
+git remote
+
+
